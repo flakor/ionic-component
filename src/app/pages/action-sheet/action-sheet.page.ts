@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from 'src/app/components/header/header.component';
+import { ActionSheetController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-action-sheet',
@@ -8,9 +9,40 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 })
 export class ActionSheetPage implements OnInit {
 
-  constructor() { }
+  constructor(public actionSheetController: ActionSheetController) { }
 
   ngOnInit() {
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Albums',
+      backdropDismiss: false,
+      buttons: [{
+        text: 'Delete',
+        role: 'destructive',
+        icon: 'trash',
+        cssClass: 'rojos',
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Share',
+        icon: 'share',
+        handler: () => {
+          console.log('Share clicked');
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+  
+    await actionSheet.present();
   }
 
 }

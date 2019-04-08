@@ -10,7 +10,7 @@
     <ion-list>
         <ion-item *ngFor="let c of componentes" [routerLink]="[c.redirecTo]" detail>
             <ion-icon slot="start" [name]="c.icon"></ion-icon>
-            <ion-label>{{c.icon}}</ion-label>
+            <ion-label>{{c.name}}</ion-label>
         </ion-item>
 
     </ion-list>
