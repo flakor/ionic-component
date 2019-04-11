@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+import { Componente } from '../../interfaces/interfaces';
+import { Observable } from 'rxjs';
+import { DataService } from '../../services/data.service';
+
 
 @Component({
   selector: 'app-inicio',
@@ -7,97 +12,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
 
-  componentes: Componente[] = [
-    {
-      icon: 'american-football',
-      name: 'Action Sheet',
-      redirecTo: '/action-sheet'
+  componentes: Observable<Componente[]>;
 
-    },
-    {
-      icon: 'appstore',
-      name: 'Alert',
-      redirecTo: '/alert'
-
-    },
-    {
-      icon: 'beaker',
-      name: 'Avatar',
-      redirecTo: '/avatar'
-
-    },
-    {
-      icon: 'radio-button-on',
-      name: 'Botones y router',
-      redirecTo: '/botones'
-
-    },
-    {
-      icon: 'card',
-      name: 'Cards',
-      redirecTo: '/card'
-
-    },
-    {
-      icon: 'checkmark-circle-outline',
-      name: 'Checkbox',
-      redirecTo: '/check'
-
-    },
-    {
-      icon: 'calendar',
-      name: 'DateTime',
-      redirecTo: '/date-time'
-
-    },
-    {
-      icon: 'car',
-      name: 'Fab',
-      redirecTo: '/fab'
-
-    },
-    {
-      icon: 'grid',
-      name: 'Grid - Rows',
-      redirecTo: '/grid'
-
-    },
-    {
-      icon: 'infinite',
-      name: 'Infinite - Scroll',
-      redirecTo: '/infinite-scroll'
-
-    },
-    {
-      icon: 'hammer',
-      name: 'Input- forms',
-      redirecTo: '/input'
-
-    },
-    {
-      icon: 'list',
-      name: 'Listas - Sliding',
-      redirecTo: '/list'
-
-    },
-    {
-      icon: 'reorder',
-      name: 'Listas - Reorder',
-      redirecTo: '/list-reorder'
-
-    }
-  ];
-
-  constructor() { }
+  constructor( private menuController: MenuController,
+    public  dataService: DataService) { }
 
   ngOnInit() {
+    this.componentes = this.dataService.getMenuOpts();
+   
+  }
+  toggleMenu(){
+      this.menuController.toggle();
   }
 
-}
-
-
-interface Componente{
-  icon: string,
-  name: string,
-  redirecTo: string;
 }
