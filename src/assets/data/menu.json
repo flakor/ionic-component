@@ -111,5 +111,23 @@
         "name": "Searchbar",
         "redirecTo": "/searchbar"
 
+    },
+    {
+        "icon": "copy",
+        "name": "Segment",
+        "redirecTo": "/segment"
+
+    },
+    {
+        "icon": "albums",
+        "name": "Slides",
+        "redirecTo": "/slides"
+
+    },
+    {
+        "icon": "cog",
+        "name": "Tabs",
+        "redirecTo": "/tabs/account"
+
     }
 ]
